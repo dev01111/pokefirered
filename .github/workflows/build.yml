@@ -72,7 +72,18 @@ jobs:
           COMPARE: 0
         run: |
           make -j${nproc} all
-
+      - name: Upload ROM 1
+        uses: actions/upload-artifact@v3
+        with: 
+          name: "PokeFireRed"
+          path: "pokefirered.gba"
+      
+      - name: Upload ROM 2
+        uses: actions/upload-artifact@v3
+        with: 
+          name: "PokeLeafGreen"
+          path: "pokeleafgreen.gba"
+      
       - name: Webhook
         if: ${{ github.event_name == 'push' && github.repository_owner == 'pret' }}
         env:
